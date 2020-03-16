@@ -12,3 +12,4 @@
 */
 
 $router->get('/names/{terms}/{dupes}', 'NameController@show');
+$router->get('/search', 'SearchController@index');
