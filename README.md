@@ -3,37 +3,46 @@
 Following things are required to run this project:
 1. Need php >= 7.0 and mysql >= 5 installed. 
 2. In mysql create database named 'page_search'. you can use following command for it :
-    CREATE DATABASE page_search;
 
-clone repository and run following command
-    run composer install
+    `CREATE DATABASE page_search;`
 
-start lumen artisan server by using your available port
-    php -S localhost:80 -t public
+3. clone this repository, go to single-page-search folder and run following command
+
+    `composer install`
+
+4. start lumen artisan server by using your available port
+
+    `php -S localhost:80 -t public`
     
-Copy .env.example to .env and make following changes 
-1. APP_URL = lumen artisan server url
-2. change DB_HOST, DB_PORT, DB_USERNAME and DB_PASSWORD as per your config
+5. Copy .env.example to .env and make following changes 
+    1. APP_URL = lumen artisan server url
+    2. change DB_HOST, DB_PORT, DB_USERNAME and DB_PASSWORD as per your config
 
-Run following commands to create required db table and fill up data
+6. Run following commands to create required db table and fill up data
     php artisan migrate
     
-To fill up table with data :
-1. If given names.csv, then run mysql query
-    LOAD DATA LOCAL INFILE '<path>/names.csv' INTO TABLE `names` FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n' (firstname, lastname, @created_at, @updated_at)SET created_at = STR_TO_DATE(@created_at, '%Y-%m-%d');
-2. If want to use fake data by lumen faker then run from command line
-    php artisan db:seed
+7. To fill up table with data :
+    1. If given names.csv, then run mysql query
+    
+        `LOAD DATA LOCAL INFILE '<path>/names.csv' INTO TABLE `names` FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n' (firstname, lastname, @created_at, @updated_at)SET created_at = STR_TO_DATE(@created_at, '%Y-%m-%d');`
+    2. If want to use fake data by lumen faker then run from command line
+    
+        `php artisan db:seed`
     
 ### Frontend
 Launch following url in browser to have search box, which searches using backend api
-    http://localhost:80//search
+
+    http://localhost:80/search
     
 ### Backend
 Launch following url to use php backend api to filter through names. {terms} should be string for searching in lastname. {dupes} should be boolean, where 'true' for having result with unique data and 'false' means having data as available in database.
-    localhost:80//names/{terms}/{dupes}
+
+    http://localhost:80/names/{terms}/{dupes}
     
 
-
+##
+##
+##
 
 ## Lumen PHP Framework
 
